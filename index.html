@@ -154,6 +154,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-多节点linux环境打造" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/03/%E5%A4%9A%E8%8A%82%E7%82%B9linux%E7%8E%AF%E5%A2%83%E6%89%93%E9%80%A0/">多节点linux环境打造</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/03/%E5%A4%9A%E8%8A%82%E7%82%B9linux%E7%8E%AF%E5%A2%83%E6%89%93%E9%80%A0/" class="archive-article-date">
+  	<time datetime="2020-07-03T01:53:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><p>采用VMwarm Linux 虚拟机 </p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>1、去官网下载VMwarm虚拟机工具<br>2、下载centos7镜像</p>
+<h2 id="安装第一个节点步骤"><a href="#安装第一个节点步骤" class="headerlink" title="安装第一个节点步骤"></a>安装第一个节点步骤</h2><p><img src="./images/linux/linux_20200703101701.png" alt="VMwarm虚拟机安装图解"><br><img src="./images/linux/linux_20200703101831.png" alt="VMwarm虚拟机安装图解"><br><img src="./images/linux/linux_20200703101853.png" alt="VMwarm虚拟机安装图解"></p>
+<p>  1、修改虚拟机名称和安装位置，建议安装在D盘</p>
+<p><img src="./images/linux/linux_20200703101921.png" alt="VMwarm虚拟机安装图解"><br><img src="./images/linux/linux_20200703102021.png" alt="VMwarm虚拟机安装图解"><br>  2、点击自定义硬件进行设置  </p>
+<p><img src="./images/linux/linux_20200703102107.png" alt="VMwarm虚拟机安装图解"><br>  3、修改内存为2048M,修改cpu为2核 新 CD/DVD(IDE)选择centos镜像的位置<br>  4、网络设置选择自定义(调用设定好的虚拟网络)  </p>
+<p><img src="./images/linux/linux_20200703102232.png" alt="VMwarm虚拟机安装图解"><br>  5、虚拟网络设置  </p>
+<p><img src="./images/linux/network_20200706085438.png" alt="VMwarm虚拟机安装图解"><br><img src="./images/linux/network_20200706085518.png" alt="VMwarm虚拟机安装图解"><br><img src="./images/linux/network_20200706085757.png" alt="VMwarm虚拟机安装图解"></p>
+<p>6、安装centos系统<br><img src="./images/linux/linux_20200703102708.png" alt="VMwarm虚拟机安装图解"><br><img src="./images/linux/linux_linux_20200703102927.png" alt="VMwarm虚拟机安装图解"><br>7、系统完成之后输入账号密码进入系统界面,右键打开终端,输入命令 ifconfig<br>   看到ens33就是此系统的网卡,目前是没有ip地址的<br><img src="./images/linux/network_20200706164641.png" alt="VMwarm虚拟机安装图解"><br>8、输入 su root 命令,切换到root用户,再输入dhclient命令,为网卡分配一个可用的地址,<br>   图中红框处192.168.xxx.xxx即为分配地址<br><img src="./images/linux/network_20200707082712.png" alt="VMwarm虚拟机安装图解"></p>
+<p>9、此时的ip地址是动态变化的,可能下次启动的时候地址就改变了,为了方便使用需要修改配置文件,将地址固定<br>   cd /etc/sysconfig/network-scripts 看看此文件夹下是否有红框中的文件,如果有用图片底部的命令将其打开<br>   vi /etc/sysconfig/network-scripts/ifcfg-ens33<br><img src="./images/linux/network_20200707082712.png" alt="VMwarm虚拟机安装图解"><br>10、修改和增加配置文件中的值,正确结果如下图(ip地址为之前分配的ip地址)<br><img src="./images/linux/network_20200707084724.png" alt="VMwarm虚拟机安装图解"><br>11、测试与外界是否能够联通<br>    (1)测试能否连上外网：ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>    (2)测试能否与真机互通：ping 物理机ip地址  </p>
+<p>12、若通即完成第一个节点的搭建,其余节点搭建步骤相同<br>      tip:网络配置是特别容易出问题,需重视！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/03/%E5%A4%9A%E8%8A%82%E7%82%B9linux%E7%8E%AF%E5%A2%83%E6%89%93%E9%80%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
